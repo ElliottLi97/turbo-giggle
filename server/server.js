@@ -8,7 +8,6 @@ const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -22,7 +21,6 @@ const {
 
 const server = http.createServer(app);
 const io = socketio(server);
-
 const botName = "Medical Portal Chat Bot";
 
 // Run when client connects
@@ -32,7 +30,6 @@ io.on("connection", (socket) => {
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
-
     // Welcome current user
     socket.emit("message", formatMessage(botName, "Welcome to Medical Portal Chat Support!"));
 
@@ -54,10 +51,8 @@ io.on("connection", (socket) => {
   // Listen for chatMessage
   socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id);
-
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
-
   // Runs when client disconnects
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);
@@ -67,7 +62,6 @@ io.on("connection", (socket) => {
         "message",
         formatMessage(botName, `${user.username} has left the chat`)
       );
-
       // Send users and room info
       io.to(user.room).emit("roomUsers", {
         room: user.room,
@@ -80,7 +74,6 @@ io.on("connection", (socket) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(routes);
 
 db.once('open', () => {
