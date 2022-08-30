@@ -28,7 +28,7 @@ const styles ={
     }
 }
 
-const Body = ()     => {
+const Home = ()     => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
