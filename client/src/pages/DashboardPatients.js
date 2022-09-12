@@ -59,6 +59,8 @@ const styles = {
 const DashboardPatients = (props) => {
   const { loading, error, data } = useQuery(getPatient);
   console.log(data)
+  const userData = data?.me || [];
+  console.log(userData)
   if (loading) {
     return <h2>LOADING...</h2>;
   }

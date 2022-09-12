@@ -4,6 +4,10 @@ const getPatient = gql`
 {
     me{
         username
+        firstName
+        lastName
+
+        email
     }
 }`
 
@@ -29,6 +33,8 @@ const GET_ALL_DOCTORS = gql `
         getDoctors{
             username
             email
+
+
         }
     }
 `
