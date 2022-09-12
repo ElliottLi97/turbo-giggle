@@ -18,7 +18,7 @@ const resolvers = {
     // },
     Query: { //NOT WORKING
         getDoctorByID: async (parent,{_id}) => {
-            const doctor = await Doctors.findOne(_id)
+            const doctor = await Doctors.findOne({_id})
             if(!doctor){
                 throw new AuthenticationError (`Doctor ID is invalid`)
             }
@@ -28,7 +28,7 @@ const resolvers = {
 
     Query: { //NOT WORKING
         getPatientByID: async (parent,{_id}) => {
-            const patient = await Patients.findOne(_id)
+            const patient = await Patients.findOne(email)
             if(!patient){
                 throw new AuthenticationError (`Patient ID is invalid`)
             }

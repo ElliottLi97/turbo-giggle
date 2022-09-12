@@ -45,7 +45,7 @@ const typeDefs = gql`
 
         
         getPatients:[Patients]
-        getPatientByID(_id: String!): Patients
+        getPatientByID(email: String!): Patients
         getDoctorByID(_id: String!): Doctors
     }
 
