@@ -39,7 +39,7 @@ const LoginForm = () => {
             });
             console.log("Patient Data:" + data);
 
-            Auth.login(data.loginPatients.token, false);
+            Auth.login(data.loginPatients.token, "patient");
 
         } catch (e) {
             console.error(e);

@@ -37,7 +37,7 @@ const SignupDoctors = () => {
                 variables: { ...userFormData }
             });
 
-            Auth.login(data.addDoctors.token, true);
+            Auth.login(data.addDoctors.token, "doctor");
 
         } catch (err) {
             console.error(err);

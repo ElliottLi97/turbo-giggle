@@ -32,18 +32,16 @@ class AuthService {
         return localStorage.getItem('id_token');
     }
 
-    login(idToken, doctor) {
+    login(idToken, entity) {
         // Saves user token to localStorage
         localStorage.setItem('id_token', idToken);
-        
-        if (doctor){
+        if (entity === "doctor"){
             window.location.assign('/doctors-dashboard');
             localStorage.setItem('entity', 'doctor');
-        } else {
+        } else if (entity === "patient") {
             window.location.assign('/patients-dashboard');
             localStorage.setItem('entity', 'patient');
         }
-
     }
 
     logout() {

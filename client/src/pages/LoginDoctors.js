@@ -1,17 +1,18 @@
 // see SignupForm.js for comments
 import React, { useState } from 'react';
+import { LOGIN_DOCTORS } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { LOGIN_DOCTORS } from '../utils/mutations';
+
 import Auth from '../utils/auth';
 import { main, logindoctor } from './styles';
 
 
-const LoginDoctor = () => {
+const LoginDoctorForm = () => {
     // set initial form state
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
 
-    const [loginDoctors] = useMutation(LOGIN_DOCTORS);
+    const [loginDoctors, {error}] = useMutation(LOGIN_DOCTORS);
 
     // set state for form validation
     const [validated] = useState(false);
@@ -37,11 +38,13 @@ const LoginDoctor = () => {
             const { data } = await loginDoctors({
                 variables: { ...userFormData }
             });
+            console.log("here")
             console.log("loginDoctors::: ", data)
-            Auth.login(data.loginDoctors.token, true);
+            Auth.login(data.loginDoctors.token, "doctor");
 
         } catch (e) {
-            console.error(e);
+            console.error(error);
+            
             setShowAlert(true);
         }
 
@@ -112,4 +115,4 @@ const LoginDoctor = () => {
     );
 };
 
-export default LoginDoctor;
+export default LoginDoctorForm;

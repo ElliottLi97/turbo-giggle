@@ -63,7 +63,6 @@ const NavBar = () => {
                     </i>
 
                     <ul style={{ left: open ? "0" : "-100vw" }}>
-                        {/* <li>
                     {Auth.loggedIn() ? (
                         (Auth.getEntity() === "patient") ? (
                             <li>
@@ -95,8 +94,8 @@ const NavBar = () => {
                             >
                                 Home
                             </Link>
-                        </li> */}
-                        
+                        </li>
+                    )}    
                         <li>
                             <Link
                                 to="/about"
