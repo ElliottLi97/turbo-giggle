@@ -3,30 +3,7 @@ import gql from 'graphql-tag';
 const getPatient = gql`
 {
     me{
-        firstName
-        lastName
-        email
-        address
-        gender
-        appointments{
-            status 
-            concern 
-            dateTime
-            doctor
-            patient
-        }
-        primarycareteam{
-            name
-            gender
-            email
-        }
-        history{
-            height
-            weight
-            allergies
-            medications
-            data
-        }
+        username
     }
 }`
 
@@ -58,3 +35,29 @@ const GET_ALL_DOCTORS = gql `
 
 
 export { getPatient, getDoctor, GET_ALL_DOCTORS } 
+
+
+// firstName
+// lastName
+// email
+// address
+// gender
+// appointments{
+//     status 
+//     concern 
+//     dateTime
+//     doctor
+//     patient
+// }
+// primarycareteam{
+//     name
+//     gender
+//     email
+// }
+// history{
+//     height
+//     weight
+//     allergies
+//     medications
+//     data
+// }

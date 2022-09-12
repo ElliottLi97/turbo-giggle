@@ -1,7 +1,8 @@
 import React from "react";
 
 import "../css/style.css";
-
+import { getPatient } from '../utils/queries';
+import { useQuery } from '@apollo/react-hooks';
 import appointments from "../assets/appointments.png";
 import addappointments from "../assets/add_appointments.png";
 import history from "../assets/history.png";
@@ -56,6 +57,12 @@ const styles = {
 };
 
 const DashboardPatients = (props) => {
+  const { loading, error, data } = useQuery(getPatient);
+  console.log(data)
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+
   return (
     <div style={styles.container}>
       {/* HELP WITH THE GRAPHQL </div> */}
