@@ -9,17 +9,47 @@ import { dashboard, appointments, addappointments, history, edit, chatlogin, doc
 
 
 const DashboardPatients = (props) => {
+  
+   // set initial form state
+  const [userData, setUserData] = useState({ username: '', usertype: '' });
+
+  useEffect(() => {
+    try {
+      const loggedIn = Auth.loggedIn();
+      if (loggedIn) {
+        let currentUser = Auth.getProfile();
+        let userType = Auth.getEntity();
+        console.log("currentUser:: ", currentUser)
+        setUserData({
+          username: currentUser.data.username,
+          usertype: userType,
+        });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []) // <-- empty dependency array
+
+  // Get user by id
+  const id = "631ea28824d2fe092c413d9a"
+  const { patientEmail } = useQuery(GET_PATIENT_EMAIL_BY_ID, {
+    variables: id,
+  });
+
+  // if (loading) return 'Loading...';
+  // if (error) return `Error! ${error.message}`;
+
+  console.log("this is the data from fetch::: ", patientEmail);
+  
   const {loading, error, data} = useQuery(GET_ALL_DOCTORS);
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
+  if (loading) { return <h2>LOADING...</h2>; }
   if (error) return `Error! ${error.message}`;
 
   return (
     <div style={dashboard.container}>
       <header style={dashboard.header}>
         <h1>
-          Welcome <strong>PATIENT NAME</strong>!
+          Welcome <strong>{userData.username}</strong>!
         </h1>
         <p>
           This is a secure medical portal to help connect and provide you with

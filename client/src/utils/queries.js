@@ -32,7 +32,7 @@ const getPatient = gql`
 }`
 
 const GET_PATIENT_EMAIL_BY_ID = gql`
-    query GetPatientEmailByID ($_id: String!) {
+    query GetPatientEmailByID {
         getPatientEmailByID (_id: $String) 
         {
             email
