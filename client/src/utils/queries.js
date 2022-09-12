@@ -29,20 +29,15 @@ import gql from 'graphql-tag';
     }
 }`
 
-const getDoctor = gql`
+const getDoctors = gql`
 {
-    me{
-        name
-        email
-        gender
-        appointments[{
-            status 
-            concern 
-            dateTime
-            doctor
-            patient
-        }]
+    query getDoctors{
+        mydoctors{
+            username
+            name
+            email
+        }
     }
 }`
 
-export {getDoctor, getPatient} 
+export {getDoctors, getPatient} 

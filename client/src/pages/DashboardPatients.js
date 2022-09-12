@@ -6,6 +6,8 @@ import appointments from "../assets/appointments.png";
 import addappointments from "../assets/add_appointments.png";
 import history from "../assets/history.png";
 import edit from "../assets/edit.png";
+import { useQuery } from '@apollo/react-hooks';
+import { getDoctors } from '../utils/queries';
 
 const styles = {
   container: {
@@ -49,13 +51,18 @@ const styles = {
 };
 
 const DashboardPatients = (props) => {
+
+  const { loading, data } = useQuery(getDoctors);
+  const doctorData = data?.me || {};
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
   return (
     <div style={styles.container}>
       {/* HELP WITH THE GRAPHQL </div> */}
       <h2>
-        Welcome <strong>PATIENT NAME</strong>
+        Welcome <strong>{doctorData.name}</strong>!
       </h2>
-      !
       <p>
         This is a secure medical portal to help connect and provide you with
         access and tools to assist you with your medical needs

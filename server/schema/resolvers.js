@@ -20,6 +20,9 @@ const resolvers = {
         test: async () => {
             return 'test success!';
         },
+        mydoctors: async () => {
+            return Doctors.find({});
+        }
     },
     Mutation: {
         loginPatients: async (parent, { email, password }) => {
