@@ -16,6 +16,27 @@ const resolvers = {
     //     //     return await User.findOne({ username }).select('-__v -password').populate('savedBooks');
     //     // }
     // },
+    Query: { //NOT WORKING
+        getDoctorByID: async (parent,{_id}) => {
+            const doctor = await Doctors.findOne(_id)
+            if(!doctor){
+                throw new AuthenticationError (`Doctor ID is invalid`)
+            }
+            return doctor
+        }
+    },
+
+    Query: { //NOT WORKING
+        getPatientByID: async (parent,{_id}) => {
+            const patient = await Patients.findOne(_id)
+            if(!patient){
+                throw new AuthenticationError (`Patient ID is invalid`)
+            }
+            return patient
+        }
+    },
+
+
     Query: {
         test: async () => {
             return 'test success!';
@@ -25,6 +46,17 @@ const resolvers = {
             return doctors
         }
     },
+
+    Query: { //NOT WORKING
+        test: async () => {
+            return 'test success!';
+        },
+        getPatients: async () => {
+            const patients = await Patients.find()
+            return patients
+        }
+    },
+
     Mutation: {
         loginPatients: async (parent, { email, password }) => {
             const patient = await Patients.findOne({ email });

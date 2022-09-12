@@ -97,6 +97,8 @@ app.get('/', (req, res) => {
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
+  introspection: true,
+  playground: true,
   context: authMiddleware
 });
 

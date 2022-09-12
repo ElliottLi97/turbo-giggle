@@ -41,8 +41,12 @@ const typeDefs = gql`
         doctors: [Doctors]
         patient(username: String!): Patients
         doctor(username: String!): Doctors
-
         getDoctors:[Doctors]
+
+        
+        getPatients:[Patients]
+        getPatientByID(_id: String!): Patients
+        getDoctorByID(_id: String!): Doctors
     }
 
     type Mutation {

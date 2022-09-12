@@ -1,13 +1,11 @@
 import gql from 'graphql-tag';
 
 const getPatient = gql`
-{
-    me{
-        username
-        firstName
-        lastName
-
+query GetPatientByID($_id: String!){
+    GetPatientByID (_id: $String)
+    {
         email
+
     }
 }`
 

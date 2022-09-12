@@ -57,7 +57,9 @@ const styles = {
 };
 
 const DashboardPatients = (props) => {
-  const { loading, error, data } = useQuery(getPatient);
+  const { loading, error, data } = useQuery(getPatient, {
+    variables: {}
+  });
   console.log(data)
   const userData = data?.me || [];
   console.log(userData)
