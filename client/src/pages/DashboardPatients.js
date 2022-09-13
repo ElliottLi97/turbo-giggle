@@ -28,7 +28,7 @@ const DashboardPatients = (props) => {
           Welcome <strong>{d.getPatientEmailByID.firstName} {d.getPatientEmailByID.lastName}</strong>!
         </h1>
         <p>
-          This is a secure medical portal to help connect and provide you with
+          his is a secure medical portal to help connect and provide you with
           access and tools to assist you with your medical needs
         </p>
       </header>
