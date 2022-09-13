@@ -20,7 +20,7 @@ const DashboardPatients = (props) => {
       if (patientError) return `Error! ${patientError.message}`;
     return (
       <div style={dashboard.container}>
-        <p className='loggedInAs mb-3'>
+        <p className='loggedInAs mb-4'>
             LoggedIn As: <strong>{patientData.getPatient.lastName}, {patientData.getPatient.firstName}</strong>!
           </p>
         <header style={dashboard.header}>
